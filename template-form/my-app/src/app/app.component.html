@@ -1,0 +1,32 @@
+<div class="container">
+    <h2 class="my-3">Sign Up</h2>
+    <hr>
+
+    <form (ngSubmit)="signUpSubmit(signUpForm)" #signUpForm="ngForm" novalidate>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email"
+                [(ngModel)]="user.email" #email="ngModel" required>
+            <div id="emailHelp" class="form-text text-danger" *ngIf="email.dirty && email.invalid">Email can't be empty.
+            </div>
+            <!-- <p class="h6 mt-2">Metadata</p>
+            <p>Pristine: {{email.pristine}}</p>
+            <p>Dirty: {{email.dirty}}</p>
+            <p>Valid: {{email.valid}}</p>
+            <p>Invalid: {{email.invalid}}</p>
+            <p>Touched: {{email.touched}}</p>
+            <p>Untouched: {{email.untouched}}</p> -->
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password"
+                #password="ngModel" required>
+            <div id="emailHelp" class="form-text text-danger" *ngIf="password.dirty && password.invalid">Password can't
+                be empty.
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="signUpForm.invalid">Submit</button>
+    </form>
+
+</div>
