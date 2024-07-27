@@ -1,0 +1,36 @@
+<p class="h1 my-3">Add Restaurant</p>
+<hr>
+
+<form #addRestaurantForm="ngForm" (ngSubmit)="addRestaurantSubmit(addRestaurantForm)">
+    <div class="mb-3">
+        <label for="restaurantName" class="form-label">Restaurant Name</label>
+        <input type="text" class="form-control" id="restaurantName" name="restaurantName" #restaurantName="ngModel"
+            [(ngModel)]="restaurant.restaurantName" required>
+        <div id="emailHelp" class="form-text text-danger" *ngIf="restaurantName.dirty && restaurantName.invalid">
+            Restaurant name can't be empty.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="restaurantCuisine" class="form-label">Restaurant Cuisine</label>
+        <input type="text" class="form-control" id="restaurantCuisine" name="restaurantCuisine"
+            #restaurantCuisine="ngModel" [(ngModel)]="restaurant.restaurantCuisine" required>
+        <div id="emailHelp" class="form-text text-danger" *ngIf="restaurantCuisine.dirty && restaurantCuisine.invalid">
+            Restaurant cuisine can't be empty.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="restaurantCity" class="form-label">Restaurant City</label>
+        <input type="text" class="form-control" id="restaurantCity" name="restaurantCity" #restaurantCity="ngModel"
+            [(ngModel)]="restaurant.restaurantCity" required>
+        <div id="emailHelp" class="form-text text-danger" *ngIf="restaurantCity.dirty && restaurantCity.invalid">
+            Restaurant city can't be empty.
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary"
+        [disabled]="addRestaurantForm.pristine || addRestaurantForm.invalid">Submit</button>
+    <button class="btn btn-secondary ms-2" type="reset">Clear</button>
+</form>
+
+<div class="alert alert-success mt-3" role="alert" *ngIf="restaurantCrudService.restaurantAddedSuccess">
+    Restaurant was added successfully.
+</div>
